@@ -11,7 +11,7 @@ $  apt install git
 
 $  git clone https://github.com/thebhikandeshmukh/report
 
-$  cd Report
+$  cd fbreport
 
 $  ls
 
