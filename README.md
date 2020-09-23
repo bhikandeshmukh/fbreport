@@ -1,6 +1,8 @@
 *Overview is under construction
 
-`
+###Command line
+
+```
 $  apt update && apt upgrade
 
 $  apt install python
@@ -16,6 +18,6 @@ $  ls
 $  unzip Report.zip
 
 $  python2 Report.py
-`
+```
 
 <Img src="Stock/Report.png">
