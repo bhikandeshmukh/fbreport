@@ -9,7 +9,7 @@ $  apt install python2
 
 $  apt install git
 
-$  git clone https://github.com/bhikandeshmukh/report.git
+$  git clone https://github.com/bhikandeshmukh/fbreport.git
 
 $  cd fbreport
 
