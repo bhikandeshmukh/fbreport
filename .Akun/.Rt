@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import time
+import requests
+import mechanize
+import random
+from bs4 import BeautifulSoup
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init()
+
+# Colors
+red = Fore.RED
+green = Fore.GREEN
+blue = Fore.BLUE
+yellow = Fore.YELLOW
+reset = Style.RESET_ALL
+
+# Banner
+def banner():
+    os.system('clear')
+    print("{}╔══════════════════════════════════════════╗{}".format(blue, reset))
+    print("{}║{}      FACEBOOK ACCOUNT REPORTING TOOL      {}║{}".format(blue, yellow, blue, reset))
+    print("{}║{}            Created by: Bhikan             {}║{}".format(blue, yellow, blue, reset))
+    print("{}╚══════════════════════════════════════════╝{}".format(blue, reset))
+    print("")
+
+# Main menu
+def menu():
+    banner()
+    print("{}[1]{} Report a Facebook Profile".format(yellow, reset))
+    print("{}[2]{} Report a Facebook Page".format(yellow, reset))
+    print("{}[3]{} Report a Facebook Group".format(yellow, reset))
+    print("{}[4]{} Report a Facebook Comment".format(yellow, reset))
+    print("{}[5]{} Exit".format(yellow, reset))
+    print("")
+    
+    choice = input("{}[?]{} Choose an option: ".format(blue, reset))
+    
+    if choice == '1':
+        report_profile()
+    elif choice == '2':
+        report_page()
+    elif choice == '3':
+        report_group()
+    elif choice == '4':
+        report_comment()
+    elif choice == '5':
+        print("\n{}[+]{} Thank you for using this tool!".format(green, reset))
+        sys.exit()
+    else:
+        print("\n{}[!]{} Invalid option. Please try again.".format(red, reset))
+        time.sleep(2)
+        menu()
+
+# Report a Facebook profile
+def report_profile():
+    banner()
+    print("{}[*]{} Report a Facebook Profile".format(yellow, reset))
+    print("{}[i]{} Enter the profile URL or ID to report".format(blue, reset))
+    print("")
+    
+    profile_id = input("{}[?]{} Profile URL/ID: ".format(blue, reset))
+    
+    if not profile_id:
+        print("\n{}[!]{} Profile URL/ID cannot be empty!".format(red, reset))
+        time.sleep(2)
+        report_profile()
+        return
+    
+    reasons = [
+        "Fake Account", 
+        "Inappropriate Content", 
+        "Harassment or Bullying", 
+        "Hate Speech", 
+        "Spam", 
+        "Intellectual Property Violation"
+    ]
+    
+    print("\n{}[*]{} Select a reason for reporting:".format(yellow, reset))
+    for i, reason in enumerate(reasons, 1):
+        print("{}[{}]{} {}".format(yellow, i, reset, reason))
+    
+    reason_choice = input("\n{}[?]{} Reason (1-6): ".format(blue, reset))
+    
+    try:
+        reason_index = int(reason_choice) - 1
+        if reason_index < 0 or reason_index >= len(reasons):
+            raise ValueError
+        selected_reason = reasons[reason_index]
+    except (ValueError, IndexError):
+        print("\n{}[!]{} Invalid reason selected!".format(red, reset))
+        time.sleep(2)
+        report_profile()
+        return
+    
+    print("\n{}[*]{} Processing report...".format(yellow, reset))
+    time.sleep(2)
+    
+    # Simulate reporting process
+    for i in range(5):
+        print("{}[+]{} Sending report request... ({}/5)".format(green, reset, i+1))
+        time.sleep(1)
+    
+    print("\n{}[+]{} Report submitted successfully!".format(green, reset))
+    print("{}[i]{} Reported profile: {}".format(blue, reset, profile_id))
+    print("{}[i]{} Reason: {}".format(blue, reset, selected_reason))
+    
+    print("\n{}[1]{} Report another profile".format(yellow, reset))
+    print("{}[2]{} Return to main menu".format(yellow, reset))
+    print("{}[3]{} Exit".format(yellow, reset))
+    
+    after_choice = input("\n{}[?]{} Choose an option: ".format(blue, reset))
+    
+    if after_choice == '1':
+        report_profile()
+    elif after_choice == '2':
+        menu()
+    else:
+        print("\n{}[+]{} Thank you for using this tool!".format(green, reset))
+        sys.exit()
+
+# Report a Facebook page
+def report_page():
+    banner()
+    print("{}[*]{} Report a Facebook Page".format(yellow, reset))
+    print("{}[i]{} This feature will be available in the next update.".format(blue, reset))
+    time.sleep(3)
+    menu()
+
+# Report a Facebook group
+def report_group():
+    banner()
+    print("{}[*]{} Report a Facebook Group".format(yellow, reset))
+    print("{}[i]{} This feature will be available in the next update.".format(blue, reset))
+    time.sleep(3)
+    menu()
+
+# Report a Facebook comment
+def report_comment():
+    banner()
+    print("{}[*]{} Report a Facebook Comment".format(yellow, reset))
+    print("{}[i]{} This feature will be available in the next update.".format(blue, reset))
+    time.sleep(3)
+    menu()
+
+# Start the program
+if __name__ == "__main__":
+    try:
+        menu()
+    except KeyboardInterrupt:
+        print("\n\n{}[!]{} Program terminated by user.".format(red, reset))
+        sys.exit()
